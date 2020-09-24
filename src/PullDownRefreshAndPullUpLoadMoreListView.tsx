@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import type { ViewStyle, ListRenderItem, ViewToken } from "react-native";
+import { ViewStyle, ListRenderItem, ViewToken } from "react-native";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import RefreshListView, { endRefreshing } from "./RefreshListView";
 import { RefreshState } from "./RefreshState";
