@@ -1,0 +1,22 @@
+{
+  "name": "@damoness/react-native-refresh-example",
+  "displayName": "ReactNativeRefresh Example",
+  "expo": {
+    "name": "@damoness/react-native-refresh-example",
+    "slug": "damoness-react-native-refresh-example",
+    "description": "Example app for @damoness/react-native-refresh",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
