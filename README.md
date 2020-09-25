@@ -11,11 +11,11 @@ npm install @damoness/react-native-refresh
 ## Usage
 
 ```js
-import ReactNativeRefresh from "@damoness/react-native-refresh";
+import {RefreshListView,PullDownRefreshAndPullUpLoadMoreListView} from "@damoness/react-native-refresh";
 
 // ...
 
-const result = await ReactNativeRefresh.multiply(3, 7);
+
 ```
 
 ## Contributing

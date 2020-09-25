@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import { ViewStyle, ListRenderItem, ViewToken } from "react-native";
+import { FlatListProps } from "react-native";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import RefreshListView, { endRefreshing } from "./RefreshListView";
 import { RefreshState } from "./RefreshState";
@@ -26,25 +26,24 @@ type Props<ItemT> = {
     page_size: number,
     ...restOfParams: any[]
   ) => Promise<ItemT[]>; //加载数据的函数
+
   loadDataParams: any[]; //需要的参数
 
-  style?: ViewStyle;
-  ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
-  ItemSeparatorComponent?: React.ComponentType<any> | null;
-  onViewableItemsChanged?:
-    | ((info: {
-        viewableItems: Array<ViewToken>;
-        changed: Array<ViewToken>;
-      }) => void)
-    | null;
-  ListEmptyComponent?: React.ReactElement | null;
-
-  numColumns?: number;
-  renderItem: ListRenderItem<ItemT>;
-
-  keyExtractor?: (item: ItemT, index: number) => string;
-  extraData?: any;
-};
+  //style?: ViewStyle;
+  //ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
+  //ItemSeparatorComponent?: React.ComponentType<any> | null;
+  // onViewableItemsChanged?:
+  //   | ((info: {
+  //       viewableItems: Array<ViewToken>;
+  //       changed: Array<ViewToken>;
+  //     }) => void)
+  //   | null;
+  //ListEmptyComponent?: React.ReactElement | null;
+  // numColumns?: number;
+  // renderItem: ListRenderItem<ItemT>;
+  // keyExtractor?: (item: ItemT, index: number) => string;
+  // extraData?: any;
+} & FlatListProps<ItemT>;
 
 type State<ItemT> = {
   loading: boolean;
@@ -252,7 +251,11 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
     const { ListEmptyComponent } = this.props;
 
     if (ListEmptyComponent != null) {
-      return ListEmptyComponent;
+      return React.isValidElement(ListEmptyComponent) ? (
+        ListEmptyComponent
+      ) : (
+        <ListEmptyComponent />
+      );
     } else {
       return <Error onPress={() => {}} errorInfo={"当前页面暂无数据"} />;
     }
@@ -295,7 +298,6 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
       return (
         <RefreshListView
           data={data}
-          //contentContainerStyle={{ flexGrow: 1 }}
           scrollIndicatorInsets={{ right: 1 }}
           extraData={extraData}
           numColumns={numColumns}
@@ -313,8 +315,6 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
               ? this._onFooterRefresh
               : undefined
           }
-          // renderItem={this.props.renderItem}
-          // ListHeaderComponent={this.props.ListHeaderComponent}
           {...props}
         />
       );
