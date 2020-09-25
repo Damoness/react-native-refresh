@@ -1,6 +1,6 @@
 {
   "name": "@damoness/react-native-refresh",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "下拉刷新上拉加载",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
