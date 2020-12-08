@@ -82,6 +82,15 @@ export default class RefreshListView<ItemT> extends Component<
     }
   };
 
+  public scrollToOffset = (params: {
+    animated?: boolean | null;
+    offset: number;
+  }) => {
+    if (this.listRef) {
+      this.listRef.scrollToOffset(params);
+    }
+  };
+
   public scrollToTop = () => {
     this.scrollToIndex(0);
   };

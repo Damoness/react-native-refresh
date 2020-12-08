@@ -265,6 +265,13 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
     this.refreshListViewRef && this.refreshListViewRef.scrollToIndex(index);
   };
 
+  public scrollToOffset = (params: {
+    animated?: boolean | null;
+    offset: number;
+  }) => {
+    this.refreshListViewRef && this.refreshListViewRef.scrollToOffset(params);
+  };
+
   render() {
     const {
       style,
