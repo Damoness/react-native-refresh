@@ -98,6 +98,7 @@ export default class RefreshListView<ItemT> extends Component<
   render() {
     return (
       <FlatList
+        {...this.props}
         extraData={this.props.extraData}
         scrollIndicatorInsets={this.props.scrollIndicatorInsets}
         showsVerticalScrollIndicator={this.props.showsVerticalScrollIndicator}
