@@ -14,25 +14,6 @@ export type endRefreshing = (footerState: RefreshState) => void;
 type Props<ItemT> = {
   onHeaderRefresh?: (endRefreshing: endRefreshing) => void; // 下拉刷新的方法
   onFooterRefresh?: (endRefreshing: endRefreshing) => void; // 上拉加载的方法
-
-  // onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-  // onViewableItemsChanged?:
-  //   | ((info: {
-  //       viewableItems: Array<ViewToken>;
-  //       changed: Array<ViewToken>;
-  //     }) => void)
-  //   | null;
-  // ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
-  // ListEmptyComponent?: React.ComponentType<any> | React.ReactElement | null;
-  // ItemSeparatorComponent?: React.ComponentType<any> | null;
-  // showsVerticalScrollIndicator?: boolean;
-  // scrollIndicatorInsets?: Insets; //zeroes
-  // keyExtractor?: (item: ItemT, index: number) => string;
-  // extraData?: any;
-  // style?: ViewStyle;
-  // data?: ReadonlyArray<ItemT> | null;
-  // numColumns?: number;
-  // renderItem: ListRenderItem<ItemT>;
 } & FlatListProps<ItemT>;
 
 type State = {

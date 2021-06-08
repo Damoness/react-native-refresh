@@ -218,6 +218,15 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
     this._onFirstLoading();
   }
 
+  componentDidUpdate(preProps: Props<ItemT>) {
+    if (
+      this.props.loadDataParams !== preProps.loadDataParams ||
+      this.props.loadDataFunction !== preProps.loadDataFunction
+    ) {
+      this.reloadData();
+    }
+  }
+
   public reloadData = () => {
     this._onHeaderRefresh(this.refreshListViewRef!.endRefreshing);
   };
