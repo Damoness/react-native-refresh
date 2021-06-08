@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /**
  *  Created by Damon on 2018/8/21
  */
@@ -28,21 +29,6 @@ type Props<ItemT> = {
   ) => Promise<ItemT[]>; //加载数据的函数
 
   loadDataParams: any[]; //需要的参数
-
-  //style?: ViewStyle;
-  //ListHeaderComponent?: React.ComponentType<any> | React.ReactElement | null;
-  //ItemSeparatorComponent?: React.ComponentType<any> | null;
-  // onViewableItemsChanged?:
-  //   | ((info: {
-  //       viewableItems: Array<ViewToken>;
-  //       changed: Array<ViewToken>;
-  //     }) => void)
-  //   | null;
-  //ListEmptyComponent?: React.ReactElement | null;
-  // numColumns?: number;
-  // renderItem: ListRenderItem<ItemT>;
-  // keyExtractor?: (item: ItemT, index: number) => string;
-  // extraData?: any;
 } & FlatListProps<ItemT>;
 
 type State<ItemT> = {
@@ -72,12 +58,8 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
   refreshListViewRef: RefreshListView<ItemT> | null = null;
 
   private _onHeaderRefresh = async (endRefreshing: endRefreshing) => {
-    const {
-      loadDataFunction,
-      loadDataParams,
-      onePageSize,
-      initialPage,
-    } = this.props;
+    const { loadDataFunction, loadDataParams, onePageSize, initialPage } =
+      this.props;
 
     if (!loadDataFunction) return;
 
@@ -120,12 +102,8 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
     }
   };
   private _onFirstLoading = async () => {
-    const {
-      loadDataFunction,
-      loadDataParams,
-      onePageSize,
-      initialPage,
-    } = this.props;
+    const { loadDataFunction, loadDataParams, onePageSize, initialPage } =
+      this.props;
 
     if (!loadDataFunction) return;
 
@@ -169,7 +147,7 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
       this.setState({ loading: false, error: true });
     }
   };
-  private _onFooterRefresh = async (endRefreshing: endRefreshing) => {
+  private _onFooterRefresh = async (r: endRefreshing) => {
     const { loadDataFunction, loadDataParams, onePageSize } = this.props;
 
     if (!loadDataFunction) return;
@@ -191,15 +169,15 @@ export default class PullDownRefreshAndPullUpLoadMoreListView<
           }),
           () => {
             setTimeout(() => {
-              endRefreshing && endRefreshing(RefreshState.CanLoadMore);
+              r && r(RefreshState.CanLoadMore);
             }, 300);
           }
         );
       } else {
-        endRefreshing && endRefreshing(RefreshState.NoMoreData);
+        r && r(RefreshState.NoMoreData);
       }
     } catch (error) {
-      endRefreshing && endRefreshing(RefreshState.Failure);
+      r && r(RefreshState.Failure);
     }
   };
 

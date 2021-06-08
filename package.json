@@ -1,6 +1,6 @@
 {
   "name": "@damoness/react-native-refresh",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "下拉刷新上拉加载",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -59,7 +59,7 @@
     "prettier": "^2.0.5",
     "react": "16.11.0",
     "react-native": "0.62.2",
-    "release-it": "^13.5.8",
+    "release-it": "^13.7.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
